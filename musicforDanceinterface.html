@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> Music for Dance </title> 
+</head>
+
+<body>
+    <h1>Design Your Score!</h1>
+    <p>Link to Blog Post:</p>
+    <div class="settingsBar0">
+        <p>Step1: Set Initial Parameters. Click Update! (Purple When Set)</p>
+        <button id="soundSettings" style="background-color: #FFFFFF;" onclick="setColor('soundSettings')"> Update </button>
+        <span>Bpm: </span>
+        <input id="bpm" value="60"></input>
+        <span>Start Time:</span>
+        <input id="start" value="0"></input>
+        <span>Mood: </span>
+        <select name="mood">
+            <option value="happy">Happy</option>
+            <option value="sad">Sad</option>
+            <option value="angry">Angry</option>
+            <option value="afraid">Afraid</option>
+            <option value="disgusted">Disgusted</option>
+            <option value="surprised">Surpised</option>
+        </select>
+    </div>
+
+    <div class="settingsBar1">
+        <div class="right">
+            <p>Step 2: Build your Movement Sequence!</p>
+            <span>Current Movement: </span>
+            <select name="bodypart">
+                <option value="Head">Head</option> 
+                <option value="Chest">Chest</option> 
+                <option value="Right Foot">Right Foot</option>
+                <option value="Right knee">Right Knee</option>
+                <option value="Right Hip">Right Hip</option>
+                <option value="Right Hand">Right Hand</option>
+                <option value="Right Elbow">Right Elbow</option>
+                <option value="Right Shoulder">Right Shoulder</option>
+                <option value="Left Foot">Left Foot</option>
+                <option value="Left Knee">Left Knee</option>
+                <option value="Left Hip">Left Hip</option>
+                <option value="Left Hand">Left Hand</option>
+                <option value="Left Elbow">Left Elbow</option>
+                <option value="Left Shoulder">Left Shoulder</option>
+              </select>
+              <select name="direction">
+                <option value="Forward">Forward</option>
+                <option value="Right Forward Diagonal">Right Forward Diagonal</option>
+                <option value="Right Side">Right Side</option>
+                <option value="Right Backward Diagonal">Right Backward Diagonal</option>
+                <option value="Backward">Backward</option>
+                <option value="Left Backward Diagonal">Left Backward Diagonal</option>
+                <option value="Left Side">Left Side</option>
+                <option value="Left Forward Diagonal">Left Forward Diagonal</option>
+              </select>
+            <select name="level">
+                <option value="High">High</option>
+                <option value="Middle">Middle</option>
+                <option value="Low">Low</option>
+            </select>
+            <br></br>
+            <span>Number of Beats: </span>
+            <input id="time" value = "1"></input>
+            <p></p>
+        </div>
+        <div class="left">
+            <img src="dancersheetmusic.jpg" width="75" height="125">
+        </div>
+
+    </div>
+
+    <div class="sequenceSettings">
+        <button id="add"> Add </button>
+        <button id="remove"> Remove Last </button>
+        <button id="pause"> Insert Pause </button>
+        <div class="display">
+            <p>Full Sequence: </p>
+            <p style="border-color: rgb(96, 96, 249); border-style: dashed; border-width: 3px;" id="display"></p>
+            <p> Select for Movement Sequence Example </p>
+            <button id="demo"> Demo </button>
+        </div>
+    </div>
+
+    <div class = "container">
+        <p>Step 3: Play your composition! </p>
+        <button id="play"> Play/Pause </button>
+        <button id="clear"> Reset </button>
+    </div>
+
+</body>
+
+<script type="module" src="musicForDanceLabanMapping.js"></script>
+<script>
+    function setColor(btn) {
+        var button = document.getElementById(btn);
+        if (button.style.backgroundColor == "rgb(96, 96, 249)") {
+            button.style.backgroundColor = "#FFFFFF"        
+        }
+        else {
+            button.style.backgroundColor = "rgb(96, 96, 249)"
+        }
+    }
+</script>
+
+</html>
