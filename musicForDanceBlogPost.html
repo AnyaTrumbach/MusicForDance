@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <title> Music for Dance: Blog Post </title> 
+</head>
+
+<body>
+    <p>Anya Trumbach, COMS 3430: Computational Sound - Dr. Mark Santolucito<br>
+        Final Project: Music for Dance Generator
+    </p>
+
+    <h1 style = "font-size: larger;">Design Your Score! Input Movement Sequence! Generate Your Own Choreography Inspired Composition!</h1>
+
+    <img src="step1.png" width="400">
+    <p style="text-indent: 2%;"> Step 1 of my generator allows the user to pick some initial parameters for their composition: beats per minute<br>
+        start time, and mood of the piece. I used beats per minute to calculate timeElapsedSecs in my playMelody() function <br>
+        by dividing by 60 and then dividing the duration for a particular move by the result (EQN 1). Start time is the amount <br>
+        of time before the melody begins to play, while the mood sounds always begin as soon as the play/pause button is pressed. <br>
+        This melody sound is produced by connecting an oscillator node at a frequency between 125 and 350 depending on the chosen <br>
+        mood to the frequency of another oscillator which produces a vibrato effect. The underlying tone is connected to its own <br> 
+        gain node so that it is balanced with the melody and is always quieter then the melody that is playing. </p>
+
+    <p style="text-indent: 8% ;">EQN 1: ( Time in Seconds (Seconds) = Duration (Beats)/ (Beats/Second))</p>
+            
+    <img src="step2.png" width="400">
+    <p style="text-indent: 2%;"> Step 2 requires users to input their movement sequence in accordance with the descriptors utilized by Labanotation, <br>
+        a common dance notation system. While I used the Labanotation descriptors (bodypart, direction, level, and duration), <br>
+        I chose to change the available body parts so that my generator would be controlled by joint-initiated movement and <br>
+        and would better match the 12 notes of an octave. Movements initiated by the head and chest offer the user slight variation <br>
+        from the notes in the western classical octave. As each movement is added to the sequence, I update the display and other variables <br>
+        such as the total timePassed, which allows me to display the end time of the piece at the end of the movement sequence list. <br>
+        Users also have the option to add a pause into the sequence, delete the last added movement, or select a demo that has an example <br>
+        sequence to play.
+    </p>
+
+    <img src="step3.png"  width="200">
+    <p style="text-indent: 2%;"> Once a movement sequence is entered, users can play/pause their composition or reset the page. In order <br>
+        to actually play the melody, my program first runs the play() function which initializes all of the necessary oscillator and gain nodes. <br>
+        This function plays the low frequency oscillator that creates the underlying tone since it is played seperate from the melody. <br>
+        I also create a distortion curve here for a waveshaper node which will be used later to add a distortion effect to the sound and set up <br>
+        a bandpass filter to again be use later.
+    </p>
+
+    <p style="text-indent: 2%;"> The play() function then runs a playMelody() function which reads through the movement sequence and generates <br>
+        the associated sounds. I chose to map bodypart used to pitch so that the tone of the melody is directly changed by the movement. <br>
+        Level determines what octave the assigned note is played in. I do this by multiplying the frequency by two to go up an octave if the movement <br> 
+        is on a high level and dividing by two to go down and octave if the movement is on a low level. Otherwise the note will be played at <br>
+        the initially mapped frequency. If the movement is actually a pause, playMelody() just adds to timeElapsedSecs so that later notes are not <br>
+        played by the audio context until this time has passed.
+    </p>
+
+    <p style="text-indent: 2%;"> PlayMelody() also checks the previous movement to decide if effects should be added to the sound of the melody before it is sent <br>
+        to the globalGain. If the same body part is used twice, the melody is connected to the waveshaper node from earlier and then passed to the globalGain <br>
+        node and the audio context destination. I made this choice, because often in choreography, repetition is used to emphasize a point or increase <br> 
+        the emotional effect of the choreography. I thought that a distorted sound would draw the listeners ear more than a regular sinusoidal <br>
+        oscillator. If a different side of the body is used (moving from right to left to center or to the head in any order) then the melody is passed <br>
+        through the bandpass filter, which emphasizes frequencies surrounding the new frequency. I made this choice, because using a different <br>
+        side of the body in choreography is a  more distinct visual change than switching from a knee to foot on the same side of the body, so I wanted <br>
+        the newly chosen frequency to have a more centralized effect on the sound than the old frequency. I used the disconnect function to switch <br>
+        between filters and effects, but had to keep track of the previous effect in order for this function to work.
+    </p>
+
+    <p style="text-indent: 2%;"> I also chose to use the direction of movement to add more variety to the melody by added a second note to the final product. Using frequency <Br>
+        ratios, playMelody() will add a second oscillator to the final product as long as the movement is not forwards or backwards. For both <br>
+        the orginal melody note and the second interval note if applicable, playMelody() changes the gain node that these notes are connected to and<br>
+         keeps track of timeElapsedSecs so that the notes don't overlap. The melody will keep playing over the undertone until the play/pause <br>
+         is pressed again, the global gain is set to zero, and the oscillators are stopped.
+    </p>
+
+    <p>Ideas for Next Iteration: </p>
+    <ul>
+        <li> Add the ability to play samples instead of just oscillators and be able to use the same effects.</li>
+        <li> Make it easier to input longer stretches of choreography.</li>
+        <li> Add a percussive track that plays based on the user's inputted bpm and <br>
+                time signature since this often is taken into acount when counting steps in choreography.</li>
+        <li> I would like to be able to "play" multiple movements at one time.</li>
+        <li> I would also like to increase user input by allowing them to upload they own preformatted json <br>
+            file that will load just like my demo does.</li>
+        <li> Lastly, I would like to add more hardcoded rules, effects, and the ability for randomization so that users <br>
+            can acheive a wider variety of sounds.</li>
+
+      </ul>
+
+</body>
+
+</html>

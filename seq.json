@@ -1,0 +1,75 @@
+
+{
+  "seq": [
+    {
+      "start time": 0,
+      "body": "Right Hand",
+      "direction": "Forward",
+      "level": "High",
+      "duration": 1
+    },
+    {
+      "start time": 1,
+      "body": "Left Hip",
+      "direction": "Left Backward Diagonal",
+      "level": "Middle",
+      "duration": 0.5
+    },
+    {
+      "start time": 1.5,
+      "body": "Left Elbow",
+      "direction": "Forward",
+      "level": "Low",
+      "duration": 1
+    },
+    {
+      "start time": 2.5,
+      "body": "Left Elbow",
+      "direction": "Forward",
+      "level": "Low",
+      "duration": 1
+    },
+    {
+      "start time": 3.5,
+      "body": "Left Elbow",
+      "direction": "Left Backward Diagonal",
+      "level": "High",
+      "duration": 1
+    },
+    {
+      "start time": 4.5,
+      "body": "Right Hip",
+      "direction": "Right Side",
+      "level": "High",
+      "duration": 0.5
+    },
+    {
+      "start time": 5,
+      "body": "Left Hand",
+      "direction": "Left Forward Diagonal",
+      "level": "Low",
+      "duration": 0.5
+    },
+    {
+      "start time": 5.5,
+      "body": "Left Hand",
+      "direction": "Left Forward Diagonal",
+      "level": "Low",
+      "duration": 1
+    },
+    {
+      "start time": 6.5,
+      "body": "Left Hip",
+      "direction": "Left Forward Diagonal",
+      "level": "High",
+      "duration": 1.5
+    },
+    {
+      "start time": 8,
+      "body": "Right Hand",
+      "direction": "Left Forward Diagonal",
+      "level": "Low",
+      "duration": 1
+    }
+  ]
+}
